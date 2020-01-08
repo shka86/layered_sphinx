@@ -1,0 +1,22 @@
+@import url("theme.css");
+ 
+.wy-nav-content {
+    max-width: none;
+}
+
+h1,h2 {
+    border-bottom: 1px solid #ccc;
+}
+
+h3,h4,h5,h6 {
+    text-decoration:underline;
+    text-decoration-color:#FF0000;
+}
+
+.wy-table-responsive table td, .wy-table-responsive table th {
+    white-space: normal;
+}
+
+colgroup {
+    display: none;
+}
