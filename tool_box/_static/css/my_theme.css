@@ -20,3 +20,7 @@ h3,h4,h5,h6 {
 colgroup {
     display: none;
 }
+
+.wy-side-nav-search, .wy-nav-top {
+    background: #227777;
+}
