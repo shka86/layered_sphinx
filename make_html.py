@@ -128,12 +128,8 @@ def clean_source():
 
 def main():
 
-    p_doc_src = p("./doc_source")
-    p_project = p(project)
-    p_sphinx_source = p_project / p("./source")
-    p_html_top = p_sphinx_source / p("./top")
-
     # clean source
+    p_sphinx_source = p(project) / p("./source")
     srcs = list(p_sphinx_source.glob("*"))
     safelist = [
         p_sphinx_source / p("./_static"),
@@ -151,6 +147,8 @@ def main():
             pass
 
     # copy doc source
+    p_doc_src = p("./doc_source")
+    p_html_top = p_sphinx_source / p("./top")
     du.copy_tree(str(p_doc_src), str(p_html_top))
 
     generate_spx_layer(p_html_top, if_top=True)
@@ -162,8 +160,8 @@ def main():
     if p_build.exists():
         shutil.rmtree(p_build)
 
-    cmd = "make.bat html"
-    subprocess.call(cmd)
+    cmd = "sphinx-build.exe -M html source build"
+    subprocess.run(cmd)
 
     # update_spx_source(p_tmp_ws)
 
