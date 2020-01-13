@@ -35,7 +35,7 @@ cmd = ('sphinx-quickstart'
        + project
        + ' --sep')
 
-ret = sp.call(cmd)
+ret = sp.call(cmd.split())
 
 # modify project
 src = str(p("./tool_box").absolute())
