@@ -164,9 +164,6 @@ def main():
     cmd = "sphinx-build.exe -M html source build"
     subprocess.run(cmd)
 
-    # update_spx_source(p_tmp_ws)
-
-
 
 if __name__ == '__main__':
 
