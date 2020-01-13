@@ -129,6 +129,7 @@ def clean_source():
 def main():
 
     # clean source
+    p_project = p(project)
     p_sphinx_source = p(project) / p("./source")
     srcs = list(p_sphinx_source.glob("*"))
     safelist = [
