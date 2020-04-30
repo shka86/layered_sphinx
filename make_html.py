@@ -149,7 +149,7 @@ def main():
 
     # copy doc source
     p_doc_src = p("./doc_source")
-    p_html_top = p_sphinx_source / p("./top")
+    p_html_top = p_sphinx_source / p(".")
     du.copy_tree(str(p_doc_src), str(p_html_top))
 
     generate_spx_layer(p_html_top, if_top=True)
