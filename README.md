@@ -2,16 +2,26 @@ README
 ====
 
 Generate layered sphinx document.
-Setup script included.
 
 <!-- ## Description -->
 
 ## Requirement
-- python3 (confirmed: v3.7.3)
+- python3 (confirmed: v3.6.8)
+
+## Install
+
+"""sh
+# (optional) make python virtual enviromnent
+python3 -m venv venv
+# to start: "source venv/bin/activate"
+# to close: "deactivate"
+
+pip3 install sphinx commonmark recommonmark sphinx-markdown-tables sphinx_rtd_theme
+
+"""
 
 ## Usage
 
-1. "install_sphinx.py"
 1. Edit "settings.json"
 1. "generate_project.py"
 1. Prepare your documents in "doc_souces". Some sample docs included initially.
