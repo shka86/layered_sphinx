@@ -13,7 +13,8 @@ Generate layered sphinx document.
 """sh
 # (optional) make python virtual enviromnent
 python3 -m venv venv
-# to start: "source venv/bin/activate"
+# to start@bash: "source venv/bin/activate"
+# to start@csh: "source venv/bin/activate.csh"
 # to close: "deactivate"
 
 pip3 install sphinx commonmark recommonmark sphinx-markdown-tables sphinx_rtd_theme
@@ -26,6 +27,11 @@ pip3 install sphinx commonmark recommonmark sphinx-markdown-tables sphinx_rtd_th
 1. "generate_project.py"
 1. Prepare your documents in "doc_souces". Some sample docs included initially.
 1. "make_html.py"
+
+## Tips
+
+To copy (or move) the venv, copy it and repeate "python -m venv venv".
+Then the copied packages will be available.
 
 ## Licence
 
