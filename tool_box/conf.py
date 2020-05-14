@@ -17,7 +17,7 @@ release = '1.0'
 
 # -- General configuration ---------------------------------------------------
 extensions = [
-    'sphinx_markdown_tables',
+    'sphinx_markdown_tables', 'recommonmark',
 ]
 
 templates_path = ['_templates']
@@ -26,7 +26,11 @@ language = 'ja'
 
 exclude_patterns = []
 
-source_suffix = ['.rst', '.md']
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.txt': 'markdown',
+    '.md': 'markdown',
+}
 source_parsers = {
     '.md': CommonMarkParser,
 }
