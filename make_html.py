@@ -161,7 +161,7 @@ def main():
     if p_build.exists():
         shutil.rmtree(p_build)
 
-    cmd = "sphinx-build.exe -M html source build"
+    cmd = "sphinx-build -M html source build"
     subprocess.run(cmd.split())
 
 
