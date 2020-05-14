@@ -40,5 +40,5 @@ html_style = "css/my_theme.css"
 
 html_static_path = ['_static']
 
-master_doc = "index"
+master_doc = "top/index"
 
