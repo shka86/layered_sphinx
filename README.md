@@ -28,6 +28,10 @@ pip3 install sphinx commonmark recommonmark sphinx-markdown-tables sphinx_rtd_th
 1. Prepare your documents in "doc_souces". Some sample docs included initially.
 1. "make_html.py"
 
+- Autobuild  
+    Execute "build_watchdog.py" and keep it running.  
+    There are many other better ways. Please select what you like.
+
 ## Tips
 
 To copy (or move) the venv, copy it and repeate "python -m venv venv".
