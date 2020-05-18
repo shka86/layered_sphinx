@@ -110,13 +110,16 @@ def update_spx_source(src=""):
     p_spxsrc_org = p(str(p_spxsrc) + "_org")
     list_src = p_spxsrc_org.glob("**/*")
     _listprint(list_src)
-    du.copy_tree(str(p_spxsrc_org), str(p_spxsrc))
+
+    shutil.copytree(str(p_spxsrc_org), str(p_spxsrc))
+    # du.copy_tree(str(p_spxsrc_org), str(p_spxsrc))
 
     # copy doc source
     list_src = src.glob("**/*")
     _listprint(list_src)
 
-    du.copy_tree(str(src), str(p_spxsrc))
+    shutil.copytree(str(src), str(p_spxsrc))
+    # du.copy_tree(str(src), str(p_spxsrc))
 
 
 def execute_spx():
@@ -129,7 +132,7 @@ def clean_source():
 def main():
 
     # clean source
-    p_project = p(project)
+    p_project = p(project).absolute()
     p_sphinx_source = p(project) / p("./source")
     srcs = list(p_sphinx_source.glob("*"))
     safelist = [
@@ -149,8 +152,10 @@ def main():
 
     # copy doc source
     p_doc_src = p("./doc_source")
+    print(p().cwd())
     p_html_top = p_sphinx_source / p("./top")
-    du.copy_tree(str(p_doc_src), str(p_html_top))
+    shutil.copytree(str(p_doc_src), str(p_html_top))
+    # du.copy_tree(str(p_doc_src), str(p_html_top))
 
     generate_spx_layer(p_html_top, if_top=True)
 
