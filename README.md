@@ -38,12 +38,19 @@ Generate layered sphinx document.
 
     ```
 
-    - If you failed due to ExecutionPolicy, please try to change it like below.  
-        ```
-        > Get-ExecutionPolicy
-        # maybe "Restricted" returns
-        > Try Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-        ```
+    - If you failed due to...
+        - ExecutionPolicy, please try to change it like below.  
+            ```
+            > Get-ExecutionPolicy
+            # maybe "Restricted" returns
+            > Try Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+            ```
+
+        - Proxy, please input proxy information as follows.
+            ```
+            > $env:http_proxy="username@proxy_server:port"
+            > $env:https_proxy="username@proxy_server:port"
+            ```
 
 ## Usage
 
