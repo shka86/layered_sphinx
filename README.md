@@ -10,7 +10,7 @@ Generate layered sphinx document.
 
 ## Install
 
-"""sh
+```sh
 # (optional) make python virtual enviromnent
 python3 -m venv venv
 # to start@bash: "source venv/bin/activate"
@@ -19,7 +19,7 @@ python3 -m venv venv
 
 pip3 install sphinx commonmark recommonmark sphinx-markdown-tables sphinx_rtd_theme
 
-"""
+```
 
 ## Usage
 
