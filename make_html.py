@@ -19,9 +19,6 @@ project = d["project"]
 
 # ##################################
 
-# spx_prj_dir = d["spx_prj_dir"]
-# spx_src_dir = d["spx_src_dir"]
-
 def _listprint(lists):
     """for debug
     """

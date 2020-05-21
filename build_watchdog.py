@@ -15,6 +15,7 @@ from pprint import pprint as pp
 import time
 
 import make_html
+import publish
 
 # ##################################
 # read paths
@@ -64,6 +65,9 @@ def main():
             pp(files)
             print("--------------------------------")
             make_html.main()
+
+            os.chdir(curdir)
+            publish.main()
             dt = datetime.datetime.now()
             print("--------------------------------")
             print("Last build @ " + dt.strftime('%Y/%m/%d-%H:%M:%S'))
