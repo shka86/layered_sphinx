@@ -33,10 +33,17 @@ Generate layered sphinx document.
 
     # Then the prompt will turn into (venv).
 
-    python -m install --upgrade pip
-    python -m install sphinx commonmark recommonmark sphinx-markdown-tables sphinx_rtd_theme
+    python -m pip install --upgrade pip
+    python -m pip install sphinx commonmark recommonmark sphinx-markdown-tables sphinx_rtd_theme
 
     ```
+
+    - If you failed due to ExecutionPolicy, please try to change it like below.  
+        ```
+        > Get-ExecutionPolicy
+        # maybe "Restricted" returns
+        > Try Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+        ```
 
 ## Usage
 
