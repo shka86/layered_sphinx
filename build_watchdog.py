@@ -11,7 +11,7 @@ from pathlib import Path as p
 # from distutils import dir_util as du
 
 import datetime
-# import pprint
+from pprint import pprint as pp
 import time
 
 import make_html
@@ -23,19 +23,30 @@ with open("settings.json", 'r', encoding='utf-8') as f:
 
 project = d["project"]
 
+# set build target directory
+curdir = p().cwd().absolute()
+build_src_dirs = [
+    curdir / p("doc_source"),
+    ]
 # ##################################
+
+def get_srcs(build_dirs):
+
+    build_files = []
+    for build_dir in build_dirs:
+        build_files += list(build_dir.glob("**/*"))
+
+    return set(build_files)
 
 def main():
 
     epoctime_mem = 0
 
-    curdir = p().cwd().absolute()
-    build_src = curdir / p("doc_source")
-
     while True:
 
         os.chdir(curdir)
-        files = list(build_src.glob("**/*"))
+
+        files = get_srcs(build_src_dirs)
         epoctime_new = 0
 
         for file in files:
@@ -49,13 +60,15 @@ def main():
             print("epoctime_mem: ", epoctime_mem)
             print("epoctime_new: ", epoctime_new)
             epoctime_mem = epoctime_new
-
+            print("--------------------------------")
+            pp(files)
+            print("--------------------------------")
             make_html.main()
             dt = datetime.datetime.now()
-            print("================================")
+            print("--------------------------------")
             print("Last build @ " + dt.strftime('%Y/%m/%d-%H:%M:%S'))
-            print("Now watching " + str(build_src))
-            print("finished")
+            print("Now watching ")
+            pp(build_src_dirs)
 
         time.sleep(1)
 
