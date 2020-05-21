@@ -6,7 +6,8 @@ Generate layered sphinx document.
 <!-- ## Description -->
 
 ## Requirement
-- python3 (confirmed: v3.6.8)
+- python3.6.8 on ubuntu20.04LTS, centOS6/7
+- python3.7.4 on windows10
 
 ## Install
 
