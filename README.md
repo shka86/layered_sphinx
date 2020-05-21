@@ -10,16 +10,33 @@ Generate layered sphinx document.
 
 ## Install
 
-```sh
-# (optional) make python virtual enviromnent
-python3 -m venv venv
-# to start@bash: "source venv/bin/activate"
-# to start@csh: "source venv/bin/activate.csh"
-# to close: "deactivate"
+- linux
 
-pip3 install sphinx commonmark recommonmark sphinx-markdown-tables sphinx_rtd_theme
+    ```sh
+    # (optional) make python virtual enviromnent
+    python3 -m venv venv
+    # to start@bash: "source venv/bin/activate"
+    # to start@csh: "source venv/bin/activate.csh"
+    # to close: "deactivate"
 
-```
+    pip3 install sphinx commonmark recommonmark sphinx-markdown-tables sphinx_rtd_theme
+
+    ```
+
+- windows
+
+    ```
+    # (optional) make python virtual enviromnent
+    python.exe -m venv venv
+    # to start: .\venv\Scripts\activate 
+    # to close: "deactivate"
+
+    # Then the prompt will turn into (venv).
+
+    python -m install --upgrade pip
+    python -m install sphinx commonmark recommonmark sphinx-markdown-tables sphinx_rtd_theme
+
+    ```
 
 ## Usage
 
