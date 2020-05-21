@@ -30,11 +30,12 @@ def main():
     epoctime_mem = 0
 
     curdir = p().cwd().absolute()
+    build_src = curdir / p("doc_source")
 
     while True:
 
         os.chdir(curdir)
-        files = list(p("doc_source").absolute().glob("**/*"))
+        files = list(build_src.glob("**/*"))
         epoctime_new = 0
 
         for file in files:
@@ -50,8 +51,11 @@ def main():
             epoctime_mem = epoctime_new
 
             make_html.main()
-            print("finished")
+            dt = datetime.datetime.now()
             print("================================")
+            print("Last build @ " + dt.strftime('%Y/%m/%d-%H:%M:%S'))
+            print("Now watching " + str(build_src))
+            print("finished")
 
         time.sleep(1)
 
