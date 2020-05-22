@@ -9,6 +9,8 @@ import subprocess
 import json
 from pathlib import Path as p
 from distutils import dir_util as du
+from pprint import pprint as pp
+import enc2utf8
 
 # ##################################
 # read paths
@@ -17,6 +19,10 @@ with open("settings.json", 'r', encoding='utf-8') as f:
 
 project = d["project"]
 p_doc_srcs = d["doc_source"]
+
+p_project = p(project).absolute()
+p_source = p_project / p("./source")
+p_source_top = p_source / p("./top")
 
 # ##################################
 
@@ -116,14 +122,12 @@ def update_spx_source(src=""):
 
 def main():
 
-    # clean source
-    p_project = p(project).absolute()
-    p_sphinx_source = p(project) / p("./source")
-    srcs = list(p_sphinx_source.glob("*"))
+    print("-- clean doc source ------------------------------")
+    srcs = list(p_source.glob("*"))
     safelist = [
-        p_sphinx_source / p("./_static"),
-        p_sphinx_source / p("./_templates"),
-        p_sphinx_source / p("./conf.py")
+        p_source / p("./_static"),
+        p_source / p("./_templates"),
+        p_source / p("./conf.py")
         ]
 
     for src in srcs[:]:
@@ -133,22 +137,30 @@ def main():
                 shutil.rmtree(src)
             else:
                 src.unlink()
-        else:
-            pass
 
-    # copy doc source
+    print("-- copy doc source ------------------------------")
     for p_doc_src in p_doc_srcs:
         p_doc_src = p(p_doc_src)
         print(p().cwd())
-        p_html_top = p_sphinx_source / p("./top")
+        p_html_top = p_source / p("./top")
         # shutil.copytree(str(p_doc_src), str(p_html_top))
         du.copy_tree(str(p_doc_src), str(p_html_top))
 
     generate_spx_layer(p_html_top, if_top=True)
 
-    # execute sphinx
+    print("-- convert encodings ------------------------------")
     os.chdir(p_project)
+    print(p_project)
+    print(p_source_top)
+    files = []
+    files += p_source_top.glob("**/*.rst")
+    files += p_source_top.glob("**/*.md")
 
+    for f in files:
+        enc2utf8.main(f)
+
+    print("-- execute sphinx ------------------------------")
+    os.chdir(p_project)
     p_build = p_project / p("build")
     if p_build.exists():
         shutil.rmtree(p_build)
