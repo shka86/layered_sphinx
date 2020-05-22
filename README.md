@@ -56,6 +56,14 @@ Generate layered sphinx document.
 ## Usage
 
 1. Edit "settings.json"
+
+    - project
+    - author
+    - version
+    - release
+    - doc_source: specify directories to convert
+
+
 1. "generate_project.py"
 1. Prepare your documents in "doc_souces". Some sample docs included initially.
 1. "make_html.py"

@@ -21,8 +21,6 @@ p_doc_srcs = d["doc_source"]
 # ##################################
 
 def _listprint(lists):
-    """for debug
-    """
     for x in lists:
         print(x)
 
@@ -41,19 +39,16 @@ def listup_docsrc(search_path):
 
 def generate_toc(toc_title, tocs):
     body = textwrap.dedent('''
-        ###toc_title###
+        {toc_title}
         ====================================
 
         .. toctree::
            :maxdepth: 2
            :caption: Contents:
 
-        ###list_doc###
+        {tocs}
 
-    ''')
-
-    body = body.replace("###toc_title###", toc_title)
-    body = body.replace("###list_doc###", tocs)
+    ''').format(toc_title=toc_title, tocs=tocs)
 
     return body
 
@@ -118,14 +113,6 @@ def update_spx_source(src=""):
 
     shutil.copytree(str(src), str(p_spxsrc))
     # du.copy_tree(str(src), str(p_spxsrc))
-
-
-def execute_spx():
-    pass
-
-
-def clean_source():
-    pass
 
 def main():
 

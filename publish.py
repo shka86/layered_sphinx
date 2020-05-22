@@ -11,8 +11,7 @@ with open("settings.json", 'r', encoding='utf-8') as f:
     d = json.load(f)
 
 project = d["project"]
-
-publish_to = p("./public_place").absolute()
+publish_to = p(d["publish_to"]).absolute()
 
 # ##################################
 
