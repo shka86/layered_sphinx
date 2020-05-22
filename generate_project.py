@@ -24,20 +24,11 @@ release = d["release"]
 # generate sphinx project
 p_prj = p(project).absolute()
 if p_prj.is_dir():
+    files = p_prj.glob("**/*")
+    for f in files:
+        os.chmod(f, 0o777)
     shutil.rmtree(p_prj)
 
-cmd = ('sphinx-quickstart'
-       + ' -p ' + project
-       + ' -a ' + author
-       + ' -v ' + version
-       + ' -r ' + release
-       + ' -l ja '
-       + project
-       + ' --sep')
-
-ret = sp.call(cmd.split())
-
-# modify project
 src = str(p("./tool_box").absolute())
 dst = str(p_prj / p("./source"))
 du.copy_tree(src, dst)
@@ -54,6 +45,3 @@ body = re.sub(r"^release.*", r"release = '" + release + "'", body, flags=re.MULT
 
 with open(confpy, 'w', encoding='utf-8') as f:
     f.write(body)
-
-confpy = p_prj / p("./source/index.rst")
-confpy.unlink()
