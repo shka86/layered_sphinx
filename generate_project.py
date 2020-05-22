@@ -10,6 +10,8 @@ from pathlib import Path as p
 from distutils import dir_util as du
 import datetime
 
+import clear_project
+
 # ##################################
 # read paths
 with open("settings.json", 'r', encoding='utf-8') as f:
@@ -21,13 +23,10 @@ version = d["version"]
 release = d["release"]
 
 # ##################################
+clear_project.main()
+
 # generate sphinx project
 p_prj = p(project).absolute()
-if p_prj.is_dir():
-    files = p_prj.glob("**/*")
-    for f in files:
-        os.chmod(f, 0o777)
-    shutil.rmtree(p_prj)
 
 src = str(p("./tool_box").absolute())
 dst = str(p_prj / p("./source"))
