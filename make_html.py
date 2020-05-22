@@ -16,6 +16,7 @@ with open("settings.json", 'r', encoding='utf-8') as f:
     d = json.load(f)
 
 project = d["project"]
+p_doc_srcs = d["doc_source"]
 
 # ##################################
 
@@ -140,6 +141,7 @@ def main():
 
     for src in srcs[:]:
         if not(src in safelist):
+            print(src)
             if src.is_dir():
                 shutil.rmtree(src)
             else:
@@ -148,11 +150,12 @@ def main():
             pass
 
     # copy doc source
-    p_doc_src = p("./doc_source")
-    print(p().cwd())
-    p_html_top = p_sphinx_source / p("./top")
-    shutil.copytree(str(p_doc_src), str(p_html_top))
-    # du.copy_tree(str(p_doc_src), str(p_html_top))
+    for p_doc_src in p_doc_srcs:
+        p_doc_src = p(p_doc_src)
+        print(p().cwd())
+        p_html_top = p_sphinx_source / p("./top")
+        # shutil.copytree(str(p_doc_src), str(p_html_top))
+        du.copy_tree(str(p_doc_src), str(p_html_top))
 
     generate_spx_layer(p_html_top, if_top=True)
 

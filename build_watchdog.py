@@ -26,16 +26,14 @@ project = d["project"]
 
 # set build target directory
 curdir = p().cwd().absolute()
-build_src_dirs = [
-    curdir / p("doc_source"),
-    ]
+build_src_dirs = d["doc_source"]
 # ##################################
 
 def get_srcs(build_dirs):
 
     build_files = []
     for build_dir in build_dirs:
-        build_files += list(build_dir.glob("**/*"))
+        build_files += list(p(build_dir).glob("**/*"))
 
     return set(build_files)
 

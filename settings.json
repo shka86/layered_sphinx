@@ -2,5 +2,9 @@
   "project": "project_name",
   "author": "author_name",
   "version": "0.0",
-  "release": "0.0"
+  "release": "0.0",
+  "doc_source": [
+    "./doc_source",
+    "./doc_source2"
+  ]
 }

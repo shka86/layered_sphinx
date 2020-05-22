@@ -28,9 +28,9 @@ clear_project.main()
 # generate sphinx project
 p_prj = p(project).absolute()
 
-src = str(p("./tool_box").absolute())
-dst = str(p_prj / p("./source"))
-du.copy_tree(src, dst)
+src = p("./tool_box").absolute()
+dst = p_prj / p("./source")
+du.copy_tree(str(src), str(dst))
 
 confpy = p_prj / p("./source/conf.py")
 with open(confpy, 'r', encoding='utf-8') as f:
