@@ -146,6 +146,10 @@ def main():
         # shutil.copytree(str(p_doc_src), str(p_html_top))
         du.copy_tree(str(p_doc_src), str(p_html_top))
 
+        files = p_html_top.glob("**/*")
+        for f in files:
+            os.chmod(f, 0o777)
+
     generate_spx_layer(p_html_top, if_top=True)
 
     print("-- convert encodings ------------------------------")
