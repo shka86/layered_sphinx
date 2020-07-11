@@ -1,12 +1,20 @@
 # -- Path setup --------------------------------------------------------------
 # enable to use markdown
+import sphinx_rtd_theme
 from recommonmark.parser import CommonMarkParser
 
 # enable reST extension on markdown source
 from recommonmark.transform import AutoStructify
 
+
+def setup(app):
+    app.add_config_value('recommonmark_config', {
+        'enable_auto_toc_tree': False,
+    }, 'env')
+    app.add_transform(AutoStructify)
+
+
 # enable rtd theme
-import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 project = 'test_prj'
@@ -36,6 +44,7 @@ source_parsers = {
 }
 
 # -- Options for HTML output -------------------------------------------------
+# html_theme = "bizstyle"
 html_theme = "sphinx_rtd_theme"
 
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
@@ -45,4 +54,3 @@ html_style = "css/my_theme.css"
 html_static_path = ['_static']
 
 master_doc = "top/index"
-

@@ -10,7 +10,7 @@ h1,h2 {
 
 h3,h4,h5,h6 {
     text-decoration:underline;
-    text-decoration-color:#FF0000;
+    text-decoration-color:#555555;
 }
 
 .wy-table-responsive table td, .wy-table-responsive table th {
